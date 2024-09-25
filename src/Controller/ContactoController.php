@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Contacto;
-use Symfony\Bridge\Doctrine\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,8 +16,11 @@ class ContactoController extends AbstractController
         5 => ["nombre" => "Mario Montero", "telefono" => "5326824", "email" => "mario.mont@ieselcaminas.org"],
         7 => ["nombre" => "Laura Martínez", "telefono" => "42898966", "email" => "lm2000@ieselcaminas.org"],
         9 => ["nombre" => "Nora Jover", "telefono" => "54565859", "email" => "norajover@ieselcaminas.org"]
-    ];    
+    ];
 
+    /**
+     * @Route("/contacto/insertar", name="insertar_contacto")
+     */
     public function insertar(ManagerRegistry $doctrine){
         $entityManager = $doctrine->getManager();
         foreach ($this->contactos as $c){
