@@ -8,11 +8,21 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PageController extends AbstractController
 {
-    #[Route('/', name: 'inicio')]
+    /**
+     * @Route("/page", name="page")
+     */
     public function index(): Response
     {
-        return $this->render('page/inicio.html.twig', [
+        return $this->render('page/index.html.twig', [
             'controller_name' => 'PageController',
         ]);
+    }
+
+    /**
+     * @Route("/", name="inicio")
+     */
+    public function inicio(): Response
+    {
+        return $this->render('inicio.html.twig');
     }
 }
